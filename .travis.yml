@@ -8,3 +8,15 @@ before_install:
 script: 
   - docker run -e CI=true pixerflame/docker-react npm run test
 
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-react1"
+  env: "Dockerreact1-env"
+  bucket_name: "elasticbeanstalk-us-east-1-298881000597"
+  bucket_path: "docker-react1"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "$AWS_SECRET_KEY"
+  
