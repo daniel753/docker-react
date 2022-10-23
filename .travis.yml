@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+
+before_install: 
+  - docker build -t pixerflame/docker-react -f Dockerfile.dev .
+
+script: 
+  - docker run -e CI=true pixerflame/docker-react npm run test
+
